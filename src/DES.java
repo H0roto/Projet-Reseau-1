@@ -1,4 +1,4 @@
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.Random;
 
 public class DES {
@@ -41,25 +41,36 @@ public class DES {
     public String decrypte(int[] messageCodé){
      return "hello";
     }
-    public String[] stringToBits(String message){
+    public int[] stringToBits(String message){
         char[] tabChar=message.toCharArray();
-        String[] tabBit=new String[tabChar.length];
-        for(int i=0;i<tabBit.length;i++){
+        StringBuilder sBit= new StringBuilder();
+        for(int i=0;i<message.length();i++){
                 int num= tabChar[i];
                 String so=Integer.toBinaryString(num);
-                tabBit[i]= so;
+                //Je veux des octets donc je demande à remplir de 0 ce qui reste pour arriver à 8
+                sBit.append(String.format("%08d", Integer.parseInt(so)));
+        }
+                int[] tabBit=new int[sBit.length()];
+        for(int j=0;j<sBit.length();j++){
+            tabBit[j]=Character.getNumericValue(sBit.charAt(j));
         }
         return tabBit;
     }
 
-    public String bitsToString(String[] blocs){ //TODO Changer le String[] en int mais pas encore x)
-        char[] tabChar=new char[blocs.length];
-        for(int i=0;i<tabChar.length;i++){
-            int number=Integer.parseInt(blocs[i],2);
-            tabChar[i]=(char) number;
+    public String bitsToString(int[] blocs){
+        ArrayList<Character> listChar= new ArrayList<>();
+        StringBuilder tempoSBits= new StringBuilder();
+        for(int i=0;i<blocs.length;i++){
+            tempoSBits.append(blocs[i]);
+            // Si nous avons 8 bits ou si nous sommes à la fin du tableau 'blocs'
+            if (tempoSBits.length()==8 || i== blocs.length-1){
+                int ascii=(Integer.parseInt(tempoSBits.toString(),2));
+                listChar.add((char)ascii);
+                tempoSBits = new StringBuilder();
+            }
         }
         StringBuilder exit = new StringBuilder();
-        for (char c:tabChar
+        for (char c:listChar
              ) {
             exit.append(c);
         }
@@ -72,18 +83,17 @@ public class DES {
              masterkey[i] = rdm;
          }
      }
-    public String[] permutation(int[] tab_permutation,String[] bloc){
-        StringBuilder sbloc = new StringBuilder();
+    public int[] permutation(int[] tab_permutation,int[] bloc){
+        int[] tempo=new int[TAILLE_BLOC];
         for(int i=0;i<TAILLE_BLOC;i++){
-         sbloc.append(bloc[i]);
-        }
-
-            return tempo;
-         }
-    public String[] invPermutation(int[] tab_permutation,String[] bloc){
-        String[] tempo=new String[64];
-        for(int i=0;i<bloc.length;i++){
             tempo[i]=bloc[tab_permutation[i]];
+        }
+        return tempo;
+         }
+    public int[] invPermutation(int[] tab_permutation,int[] bloc){
+        int[] tempo=new int[TAILLE_BLOC];
+        for(int i=0;i<bloc.length;i++){
+            tempo[tab_permutation[i]]=bloc[i];
         }
         return tempo;
     }
