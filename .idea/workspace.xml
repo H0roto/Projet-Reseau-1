@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f306b5df-4f9e-4a59-b494-c28cd790eae7" name="Changes" comment="avancée majeure x)">
+    <list default="true" id="f306b5df-4f9e-4a59-b494-c28cd790eae7" name="Changes" comment="je commit pour garder une trace de ma boucle de test x)">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/DES.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DES.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/TestDes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TestDes.java" afterDir="false" />
@@ -61,7 +61,7 @@
       <workItem from="1695026015873" duration="6014000" />
       <workItem from="1695630117162" duration="6607000" />
       <workItem from="1695753327544" duration="5208000" />
-      <workItem from="1695800135917" duration="5578000" />
+      <workItem from="1695800135917" duration="8500000" />
     </task>
     <task id="LOCAL-00001" summary="avancée majeure x)">
       <created>1695758582312</created>
@@ -70,7 +70,14 @@
       <option name="project" value="LOCAL" />
       <updated>1695758582312</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="je commit pour garder une trace de ma boucle de test x)">
+      <created>1695805803930</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1695805803930</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -89,6 +96,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="avancée majeure x)" />
-    <option name="LAST_COMMIT_MESSAGE" value="avancée majeure x)" />
+    <MESSAGE value="je commit pour garder une trace de ma boucle de test x)" />
+    <option name="LAST_COMMIT_MESSAGE" value="je commit pour garder une trace de ma boucle de test x)" />
   </component>
 </project>

@@ -34,14 +34,6 @@ public class DES {
         genereMasterKey();
         tab_cles=new int[64]; //TODO JSP bien la taille de tab_cles
     }
-
-    public int[] crypte(String message_clair){
-        return new int[1];
-    }
-
-    public String decrypte(int[] messageCodé){
-     return "hello";
-    }
     public int[] stringToBits(String message){
         char[] tabChar=message.toCharArray();
         StringBuilder sBit= new StringBuilder();
@@ -127,19 +119,48 @@ public class DES {
             }
          return exit;
     }
-    public void génèreClé(int n){
-
-    }
     public int[] decalle_gauche(int[] bloc,int nbCran){
-        return new int[2];
+        int n=bloc.length;
+        //tableau temporaire pour les éléments tout à gauche
+        int[] tempoTab=new int[nbCran];
+        //stockage de ces éléments dans le tableau temporaire
+        for(int i=0;i<nbCran;i++){
+            tempoTab[i]=bloc[i];
+        }
+        //traitement des autres entiers
+        for(int i=0;i<n-nbCran;i++){
+            bloc[i]=bloc[i+nbCran];
+        }
+
+        //traitement des éléments du tableau temporaire
+        //Je ne savais pas qu'on pouvait initialiser plusieurs variables dans une simple boucle for.
+        //Ce fut bien pratique dans ce cas puisque j'avais réellement besoin de ces 2 variables
+        for(int i=n-nbCran,j=0;i<n;i++,j++){
+            bloc[i]=tempoTab[j];
+        }
+        return bloc;
     }
     public int[] xor(int[] tab1,int[] tab2){
-        return new int[2];
+        int[] exit=new int[tab1.length];
+        for(int i=0;i<tab1.length;i++){
+            exit[i]=tab1[i]^tab2[i];
+        }
+        return exit;
+    }
+    public void génèreClé(int n){
+
     }
     public int[] fonctions_S(int[] tab){
         return new  int[2];
     }
     public int[] fonction_F(int[] uneCle,int[] unD){
         return new int[3];
+    }
+    public int[] crypte(String message_clair){
+        return new int[1];
+    }
+
+    public String decrypte(int[] messageCodé){
+     return "hello";
     }
 }
