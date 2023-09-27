@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Random;
 
 public class DES {
@@ -97,11 +98,34 @@ public class DES {
         }
         return tempo;
     }
-    public int[][] decoupage(int[] bloc,int nbBlocs){
-        return new int[3][2];
+    public int[][] decoupage(int[] bloc,int tailleBlocs){
+        //je fais ça pour avoir assez de blocs pour stocker tous les éléments du tableau bloc
+        //Si je ne fais pas ça, la division entière risque de ne pas donner assez de blocs pour stocker le nombre d'éléments voulus
+        int tailleTab=(bloc.length+tailleBlocs-1)/tailleBlocs;
+        int[][] tabTempo=new int[tailleTab][tailleBlocs];
+        for(int i=0;i<tailleTab;i++){
+            for (int j=0;j<tailleBlocs;j++){
+                int index=i*tailleBlocs+j;
+                if(index<bloc.length){
+                    tabTempo[i][j]=bloc[index];
+                }
+//                else{
+//                    tabTempo[i][j]=2;
+//                }
+            }
+        }
+        return tabTempo;
     }
     public int[] recollage_bloc(int[][] blocs){
-        return new int[2];
+        int taille=blocs[0].length;
+        int[] exit=new int[taille* blocs.length];
+         for(int i=0;i< blocs.length;i++) {
+                for (int j = 0; j < taille; j++) {
+                    int index= i * taille + j;
+                    exit[index]=blocs[i][j];
+                }
+            }
+         return exit;
     }
     public void génèreClé(int n){
 
