@@ -78,7 +78,9 @@ public class TestDes {
         System.out.println(Arrays.toString(blocTest2));
         System.out.println(Arrays.toString(d.xor(blocTest, blocTest2)));
         ///
-        d.génèreClé(1);
+        d.génèreClé(0);
+        System.out.println(Arrays.toString(d.fonctions_S(new int[]{1,1,0,1,1,1})));
+//        System.out.println(Arrays.toString(d.crypte(s)));
 
     }
 }

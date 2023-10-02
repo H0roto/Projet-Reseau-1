@@ -39,6 +39,13 @@ public class DES {
                              29, 39, 50, 44, 32, 47,
                              43, 48, 38, 55, 33, 52,
                              45, 41, 49, 35, 28, 31};
+
+    static final int[] P = {
+            5, 6, 19, 20, 28, 11, 27, 16,
+            0, 14, 22, 25, 4, 17, 30, 9,
+            1, 7, 23, 13, 31, 26, 2, 8,
+            18, 12, 29, 5, 21, 10, 3, 24
+        };
     int[] masterkey =new int[64];
     int[][] tab_cles;
 
@@ -121,6 +128,7 @@ public class DES {
         return tabTempo;
     }
     public int[] recollage_bloc(int[][] blocs){
+        System.out.println(blocs.length);
         int taille=blocs[0].length;
         int[] exit=new int[taille* blocs.length];
          for(int i=0;i< blocs.length;i++) {
@@ -167,7 +175,7 @@ public class DES {
         System.out.println("Ens Bloc perm");
         System.out.println(Arrays.deepToString(ensBloc));
         for(int i=0;i< ensBloc.length;i++){
-            ensBloc[i]=decalle_gauche(ensBloc[i],DES.TAB_DECALAGE[n-1]);
+            ensBloc[i]=decalle_gauche(ensBloc[i],DES.TAB_DECALAGE[n]);
         }
         System.out.println("Ens Bloc perm+ decalle:");
         System.out.println(Arrays.deepToString(ensBloc));
@@ -175,7 +183,7 @@ public class DES {
         System.out.println("Recollage bloc:");
         System.out.println(Arrays.toString(blocPerm));
         int[] key=permutation(PC2,blocPerm);
-        tab_cles[n-1]=key;
+        tab_cles[n]=key;
         System.out.println("clé finale");
         System.out.println(Arrays.toString(key));
 
@@ -195,14 +203,35 @@ public class DES {
     }
     public int[] fonction_F(int[] unD,int n){
         int[] dPrime=permutation(DES.E,unD);
-        int[] dStar=xor(dPrime,tab_cles[n-1]);
+        int[] dStar=xor(dPrime,tab_cles[n]);
         int[][] ensdStar=decoupage(dStar,6);
         for(int i=0;i< ensdStar.length;i++){
             ensdStar[i]=fonctions_S(ensdStar[i]);
         }
+        int[] dStarRecolle=recollage_bloc(ensdStar);
+        return permutation(P,dStarRecolle);
     }
-    public int[] crypte(String message_clair){
-        return new int[1];
+    public int[] crypte(String message_clair)
+    {
+        int[] begin=stringToBits(message_clair);
+        int[][] decoupeBegin=decoupage(begin,TAILLE_BLOC);
+        for (int i=0;i<decoupeBegin.length;i++) {
+            int[] blocPerm=permutation(PERM_INITIALE,decoupeBegin[i]);
+            int[][] sousBlocPerm=decoupage(blocPerm,TAILLE_SOUS_BLOC);
+            int[] D=sousBlocPerm[1];
+            int[] G=sousBlocPerm[0];
+            int[] oldD=D;
+            for(int j=0;j<16;j++){
+                génèreClé(j);
+                oldD=D;
+                D=xor(G,fonction_F(D,j));
+                G=oldD;
+            }
+            int[][] finRonde=new int [sousBlocPerm.length][2];
+            int[] end=invPermutation(PERM_INITIALE,recollage_bloc(finRonde));
+            decoupeBegin[i]=end;
+        }
+        return recollage_bloc(decoupeBegin);
     }
 
     public String decrypte(int[] messageCodé){
