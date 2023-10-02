@@ -78,6 +78,7 @@ public class TestDes {
         System.out.println(Arrays.toString(blocTest2));
         System.out.println(Arrays.toString(d.xor(blocTest, blocTest2)));
         ///
+        d.génèreClé(1);
 
     }
 }
