@@ -115,7 +115,7 @@ public class DES {
         return tempo;
          }
     public int[] invPermutation(int[] tab_permutation,int[] bloc){
-        int[] tempo=new int[TAILLE_BLOC];
+        int[] tempo=new int[tab_permutation.length];
         for(int i=0;i<tab_permutation.length;i++){
             tempo[tab_permutation[i]]=bloc[i];
         }
