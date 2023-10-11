@@ -1,8 +1,10 @@
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
 
 public class DES {
+    //Constantes
     static final int TAILLE_BLOC=64;
     static final int TAILLE_SOUS_BLOC=32;
     static final int NB_RONDE=1;
@@ -16,9 +18,9 @@ public class DES {
                                   60,52,44,36,28,20,12,4,
                                   62,54,46,38,30,22,14,6};
     static final int S[][]= {{14,4,13,1,2,15,11,8,3,10,6,12,5,9,0,7},
-                       {0,15,7,4,14,2,13,1,10,6,12,11,9,5,3,8},
-                       {4,1,14,8,13,6,2,11,15,12,9,7,3,10,5,0},
-                       {15,12,8,2,4,9,1,7,5,11,3,14,10,0,6,13}};
+            {0,15,7,4,14,2,13,1,10,6,12,11,9,5,3,8},
+            {4,1,14,8,13,6,2,11,15,12,9,7,3,10,5,0},
+            {15,12,8,2,4,9,1,7,5,11,3,14,10,0,6,13}};
     static final int E[]={31,0,1,2,3,4,
                           3,4,5,6,7,8,
                           7,8,9,10,11,12,
@@ -27,10 +29,16 @@ public class DES {
                           19,20,21,22,23,24,
                           23,24,25,26,27,28,
                           27,28,29,30,31,0};
-    static final int[] PC1={56,48,40,32,24,16,8,62,54,46,38,30,22,14,
-                            0,57,49,41,33,25,17,6,61,53,45,37,29,21,
-                            9,1,58,50,42,34,26,13,5,60,52,44,36,28,
-                            18,10,2,59,51,43,35,20,12,4,27,19,11,3};
+    static final int[] PC1={56,48,40,32,24,16,8,
+                            0,57,49,41,33,25,17,
+                            9,1,58,50,42,34,26,
+                            18,10,2,59,51,43,35,
+                            62,54,46,38,30,22,14,
+                            6,61,53,45,37,29,21,
+                            13,5,60,52,44,36,28,
+                            20,12,4,27,19,11,3};
+
+
     static final int[] PC2 = {13, 16, 10, 23, 0, 4,
                               2, 27, 14, 5, 20, 9,
                              22, 18, 11, 3, 25, 7,
@@ -39,13 +47,17 @@ public class DES {
                              29, 39, 50, 44, 32, 47,
                              43, 48, 38, 55, 33, 52,
                              45, 41, 49, 35, 28, 31};
-
     static final int[] P = {
             5, 6, 19, 20, 28, 11, 27, 16,
             0, 14, 22, 25, 4, 17, 30, 9,
             1, 7, 23, 13, 31, 26, 2, 8,
             18, 12, 29, 5, 21, 10, 3, 24
         };
+
+    ///
+
+    //Attributs
+
     int[] masterkey =new int[64];
     int[][] tab_cles;
 
@@ -174,6 +186,8 @@ public class DES {
         int[][] ensBloc=decoupage(tempKey,28);
         System.out.println("Ens Bloc perm");
         System.out.println(Arrays.deepToString(ensBloc));
+        System.out.println(ensBloc[0].length);
+        System.out.println(ensBloc[1].length);
         for(int i=0;i< ensBloc.length;i++){
             ensBloc[i]=decalle_gauche(ensBloc[i],DES.TAB_DECALAGE[n]);
         }
@@ -182,6 +196,7 @@ public class DES {
         int[] blocPerm=recollage_bloc(ensBloc);
         System.out.println("Recollage bloc:");
         System.out.println(Arrays.toString(blocPerm));
+        System.out.println(blocPerm.length);
         int[] key=permutation(PC2,blocPerm);
         tab_cles[n]=key;
         System.out.println("clé finale");
@@ -199,16 +214,29 @@ public class DES {
         for(int i=0;i<tabBit.length;i++){
             tabBit[i]=Character.getNumericValue(sRes.charAt(i));
         }
-        return tabBit;
+        int[] exit=new int[4];
+//        System.out.println("tabBit");
+//        System.out.println(Arrays.toString(tabBit));
+        for (int i = 0, j = 4-tabBit.length; j<exit.length && i< tabBit.length; i++,j++) {
+            exit[j]=tabBit[i];
+        }
+//        System.out.println("exit");
+//        System.out.println(Arrays.toString(exit));
+        return exit;
     }
     public int[] fonction_F(int[] unD,int n){
         int[] dPrime=permutation(DES.E,unD);
         int[] dStar=xor(dPrime,tab_cles[n]);
         int[][] ensdStar=decoupage(dStar,6);
+//        System.out.println("AHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH");
         for(int i=0;i< ensdStar.length;i++){
             ensdStar[i]=fonctions_S(ensdStar[i]);
         }
+//        System.out.println(ensdStar.length);
+//        System.out.println(Arrays.deepToString(ensdStar));
         int[] dStarRecolle=recollage_bloc(ensdStar);
+//        System.out.println("AHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH PERMUTATION");
+//        System.out.println(permutation(P,dStarRecolle).length);
         return permutation(P,dStarRecolle);
     }
     public int[] crypte(String message_clair)
@@ -220,16 +248,21 @@ public class DES {
             int[][] sousBlocPerm=decoupage(blocPerm,TAILLE_SOUS_BLOC);
             int[] D=sousBlocPerm[1];
             int[] G=sousBlocPerm[0];
-            int[] oldD=D;
-            for(int j=0;j<16;j++){
+            int[] oldD;
+            for(int j=0;j<NB_RONDE;j++){
+                System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+                System.out.println(j);
                 génèreClé(j);
                 oldD=D;
                 D=xor(G,fonction_F(D,j));
                 G=oldD;
             }
             int[][] finRonde=new int [sousBlocPerm.length][2];
+            finRonde[0]=G;
+            finRonde[1]=D;
             int[] end=invPermutation(PERM_INITIALE,recollage_bloc(finRonde));
             decoupeBegin[i]=end;
+            System.out.println(Arrays.toString(recollage_bloc(decoupeBegin)));
         }
         return recollage_bloc(decoupeBegin);
     }
