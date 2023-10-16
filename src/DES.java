@@ -1,3 +1,4 @@
+import javax.crypto.spec.PSource;
 import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -87,9 +88,12 @@ public class DES {
         for(int i=0;i<blocs.length;i++){
             tempoSBits.append(blocs[i]);
             // Si nous avons 8 bits ou si nous sommes à la fin du tableau 'blocs'
+            System.out.println(tempoSBits);
             if (tempoSBits.length()==8 || i== blocs.length-1){
-                int ascii=(Integer.parseInt(tempoSBits.toString(),2));
-                listChar.add((char)ascii);
+                if(!tempoSBits.toString().equals("00000000")) {
+                    int ascii = (Integer.parseInt(tempoSBits.toString(), 2));
+                    listChar.add((char) ascii);
+                }
                 tempoSBits = new StringBuilder();
             }
         }
@@ -267,7 +271,29 @@ public class DES {
         return recollage_bloc(decoupeBegin);
     }
 
-    public String decrypte(int[] messageCodé){
-     return "hello";
+    public String decrypte(int[] messageCodé)
+    {
+        int[][] decoupeCodé=decoupage(messageCodé,TAILLE_BLOC);
+        for(int i=0;i<decoupeCodé.length;i++){
+            int[] blocPerm=permutation(PERM_INITIALE,decoupeCodé[i]);
+            int[][] sousBlocPerm=decoupage(blocPerm,TAILLE_SOUS_BLOC);
+            int[] D=sousBlocPerm[1];
+            int[] G=sousBlocPerm[0];
+            int[] oldD;
+            for (int j=NB_RONDE-1;j>=0;j--){
+                System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+                oldD=D;
+                D=G;
+                System.out.println(j);
+                G=xor(oldD,fonction_F(D,j));
+            }
+            int[][] finRonde=new int[sousBlocPerm.length][2];
+            finRonde[0]=G;
+            finRonde[1]=D;
+            int[] end=invPermutation(PERM_INITIALE,recollage_bloc(finRonde));
+            decoupeCodé[i]=end;
+            System.out.println(Arrays.toString(recollage_bloc(decoupeCodé)));
+        }
+     return bitsToString(recollage_bloc(decoupeCodé));
     }
 }

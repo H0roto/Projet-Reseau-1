@@ -91,6 +91,8 @@ public class TestDes {
 
         //TODO  Test de crypte:
         System.out.println(Arrays.toString(d.crypte(s)));
+        System.out.println(d.decrypte(d.crypte(s)));
+        System.out.println(s);
 
     }
 }
