@@ -68,31 +68,34 @@ public class TestDes {
         ///
 
         //Test Visuel de décallage gauche TODO faire un test plus perfectionné
-        System.out.println(Arrays.toString(blocTest));
-        System.out.println(Arrays.toString(d.decalle_gauche(blocTest, 2))+"\n\n");
-        ///
-
-        //TODO Test de xor faire un test plus perfectionné
-        System.out.println(Arrays.toString(blocTest));
-        int[] blocTest2=genereBloc(64);
-        System.out.println(Arrays.toString(blocTest2));
-        System.out.println(Arrays.toString(d.xor(blocTest, blocTest2)));
-        ///
-        // TODO Test de S mieux également
-        d.génèreClé(0);
-        System.out.println(Arrays.toString(d.fonctions_S(new int[]{0,1,0,1,1,1})));
-        ///
-
-        //TODO Test de F plus perfecionné
-        d.génèreClé(0);
-        int[] blocTest3=genereBloc(64);
-        int[] D = d.decoupage(blocTest3,32)[1];
-        System.out.println(Arrays.toString((d.fonction_F(D,0))));
-
-        //TODO  Test de crypte:
-        System.out.println(Arrays.toString(d.crypte(s)));
-        System.out.println(d.decrypte(d.crypte(s)));
-        System.out.println(s);
+//        System.out.println(Arrays.toString(blocTest));
+//        System.out.println(Arrays.toString(d.decalle_gauche(blocTest, 2))+"\n\n");
+//        ///
+//
+//        //TODO Test de xor faire un test plus perfectionné
+//        System.out.println(Arrays.toString(blocTest));
+//        int[] blocTest2=genereBloc(64);
+//        System.out.println(Arrays.toString(blocTest2));
+//        System.out.println(Arrays.toString(d.xor(blocTest, blocTest2)));
+//        ///
+//        // TODO Test de S mieux également
+//        d.génèreClé(0);
+//        System.out.println(Arrays.toString(d.fonctions_S(new int[]{0,1,0,1,1,1},0)));
+//        ///
+//
+//        //TODO Test de F plus perfecionné
+//        d.génèreClé(0);
+//        int[] blocTest3=genereBloc(64);
+//        int[] D = d.decoupage(blocTest3,32)[1];
+//        System.out.println(Arrays.toString((d.fonction_F(D,0))));
+//
+//        //TODO  Test de crypte:
+//        System.out.println(Arrays.toString(d.crypte(s)));
+//        System.out.println(d.decrypte(d.crypte(s)));
+//        System.out.println(s);
+        TripleDES t=new TripleDES();
+//        System.out.println(Arrays.toString(t.crypteTripleDES(s)));
+        System.out.println(t.decrypteTripleDES(t.crypteTripleDES(s)));
 
     }
 }

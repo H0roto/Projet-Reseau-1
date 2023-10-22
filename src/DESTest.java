@@ -30,6 +30,10 @@ class DESTest extends DES {
         }
         return blocGen;
     }
+
+    public static int[] generePerm
+
+    public
     //Test de l'intégrité du message passé dans stringToBits et bitsToString
     @Test
     void testStringToBitsANDBitsToString() {
@@ -68,12 +72,31 @@ class DESTest extends DES {
              int[] res=permutation(perm,bloc);
              assertEquals(bloc[perm[0]],res[0]);
          }
+         @Test
+        void valVideTest(){
+             int[] perm=new int []{};
+             int [] bloc=new int[]{};
+             int [] blocPasVide=new int[12];
+             int[] permPasVide={1,0};
+             int[] res=permutation(perm,bloc);
+             int[] res2=permutation(perm,blocPasVide);
+             int[] res3=permutation(permPasVide,bloc);
+             //perm et blocs vides
+             assertEquals(0, res.length);
+             //perm vide mais pas bloc
+             assertEquals(blocPasVide,res2);
+             //perm pas vide mais bloc vide
+             assertEquals(0,res3.length);
+         }
     }
 
-    @Test
-    void testInvPermutation() {
-    }
+    @Nested
+    class TestInvPermutation{
+         @Test
+         void testIfComplementaire() {
 
+    }
+    }
     @Test
     void testDecoupage() {
     }
