@@ -5,9 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f306b5df-4f9e-4a59-b494-c28cd790eae7" name="Changes" comment="et paf FIN DU JEU">
-      <change afterPath="$PROJECT_DIR$/src/GraphicDES.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DES.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DES.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/DESTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DESTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GraphicDES.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GraphicDES.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,7 +74,7 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.DESTest$testPermutation">
+  <component name="RunManager" selected="JUnit.DESTest.testDecoupageEtRecollageBloc">
     <configuration name="DESTest$testPermutation" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="CrypteurDecrypteur" />
       <option name="PACKAGE_NAME" value="DESTest" />
@@ -103,11 +104,11 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="DESTest.testGenereMasterKey" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="DESTest.testDecoupageEtRecollageBloc" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="CrypteurDecrypteur" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="DESTest" />
-      <option name="METHOD_NAME" value="testGenereMasterKey" />
+      <option name="METHOD_NAME" value="testDecoupageEtRecollageBloc" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -125,11 +126,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.DESTest$testPermutation.valVideTest" />
+        <item itemvalue="JUnit.DESTest.testDecoupageEtRecollageBloc" />
         <item itemvalue="JUnit.DESTest$testPermutation" />
+        <item itemvalue="JUnit.DESTest$testPermutation.valVideTest" />
         <item itemvalue="JUnit.DESTest$testPermutation.valMinTest" />
         <item itemvalue="JUnit.DESTest.testPermutation" />
-        <item itemvalue="JUnit.DESTest.testGenereMasterKey" />
       </list>
     </recent_temporary>
   </component>

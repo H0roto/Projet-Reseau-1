@@ -2,6 +2,7 @@ import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.Random;
 import java.util.SplittableRandom;
 
@@ -30,8 +31,23 @@ class DESTest extends DES {
         }
         return blocGen;
     }
-
-//    public static int[] generePerm
+    //Ici, on génère aussi une permutation, mais cette fois-ci, sans avoir 2 fois le même chiffre dans la table ni de chiffre manquant
+    //Pour pouvoir faire l'opération inverse.
+    public static int[] generePermAlea(int taille){
+         int[] tabPerm=new int[taille];
+         HashSet<Integer> usedNumber=new HashSet<>();
+         Random r=new Random();
+         int i=0;
+         while (i<taille){
+             int number=r.nextInt(taille);
+             if (!usedNumber.contains(number)){
+                 tabPerm[i]=number;
+                 usedNumber.add(number);
+                 i++;
+             }
+         }
+         return tabPerm;
+    }
 
     public
     //Test de l'intégrité du message passé dans stringToBits et bitsToString
@@ -52,6 +68,7 @@ class DESTest extends DES {
     @Nested
     class testPermutation {
          @Test
+         //ça ne sert pas à grand-chose puisque j'utilise le même algorithme pour tester que pour coder, mais bon je le laisse
          void randomTest() {
             Random r = new Random();
             int deb = r.nextInt(1, 50);
@@ -94,17 +111,53 @@ class DESTest extends DES {
     class TestInvPermutation{
          @Test
          void testIfComplementaire() {
-
-    }
+             Random r = new Random();
+             int deb = r.nextInt(1, 50);
+             int fin = r.nextInt(51, 100);
+             for (int i = deb; i < fin; i++) {
+                int[] perm = generePermAlea(i);
+                int[] bloc = genereBlocOrPerm(i, 2);
+                int[] res = invPermutation(perm,permutation(perm, bloc));
+                assertArrayEquals(bloc,res);
+             }
+        }
+        @Test
+        void valMinTest(){
+             int[] perm=new int[]{0};
+             int[] bloc=new int[]{1};
+             int[] res = invPermutation(perm,permutation(perm, bloc));
+             assertArrayEquals(bloc,res);
+        }
+        @Test
+        void valVideTest(){
+             int[] perm=new int []{};
+             int [] bloc=new int[]{};
+             int [] blocPasVide=new int[12];
+             int[] permPasVide={1,0};
+             int[] res=invPermutation(perm,permutation(perm, bloc));
+             int[] res2=invPermutation(perm,permutation(perm,blocPasVide));
+             int[] res3=invPermutation(perm,permutation(permPasVide,bloc));
+             //perm et blocs vides
+             assertEquals(0, res.length);
+             //perm vide mais pas bloc
+            System.out.println(Arrays.toString(res2));
+             assertEquals(blocPasVide,res2);
+             //perm pas vide mais bloc vide
+             assertEquals(0,res3.length);
+         }
     }
     @Test
-    void testDecoupage() {
+    void testDecoupageEtRecollageBloc() {
+             Random r = new Random();
+             for (int k = 1; k < 1000; k++) {
+                int[] bloc = genereBlocOrPerm(k, 2);
+                int taille=r.nextInt(1,k+40);
+                int[] res = recollage_bloc(decoupage(bloc,taille));
+                 System.out.println(Arrays.toString(bloc));
+                 System.out.println(Arrays.toString(res));
+                assertArrayEquals(bloc,res);
+             }
     }
-
-    @Test
-    void testRecollage_bloc() {
-    }
-
     @Test
     void testDecalle_gauche() {
     }

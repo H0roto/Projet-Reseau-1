@@ -21,7 +21,7 @@ public class GraphicDES extends JFrame {
         add(tabbedPane, BorderLayout.NORTH);
 
         // Ajouter le premier onglet
-        JPanel panel1 = createPanel();
+        JPanel panel1 = new JPanel();
         tabbedPane.addTab("Crypter", panel1);
         tabbedPane.setForeground(Color.GREEN);  // Couleur du texte des onglets
         tabbedPane.setBackground(Color.BLACK);  // Couleur de fond des onglets non sélectionnés
@@ -37,7 +37,7 @@ public class GraphicDES extends JFrame {
         }
     });
         // Ajouter le deuxième onglet
-        JPanel panel2 = createPanel();
+        JPanel panel2 = new JPanel();
 //        panel2.setBorder(BorderFactory.createLineBorder(Color.WHITE, 0));
         tabbedPane.addTab("Décrypter", panel2);
 

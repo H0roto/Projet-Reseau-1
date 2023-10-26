@@ -179,6 +179,11 @@ public class DES {
 
      //Méthode complémentaire à permutation qui réalise la permutation inverse d'une table de permutation, à un bloc.
     public int[] invPermutation(int[] tab_permutation,int[] bloc){
+        //Je traite le cas où aucune permutation n'est appliquée
+        //Et le cas où le bloc est vide
+        if (tab_permutation.length==0 || bloc.length==0){
+            return bloc;
+        }
         int[] tempo=new int[tab_permutation.length];
         for(int i=0;i<tab_permutation.length;i++){
             tempo[tab_permutation[i]]=bloc[i];
