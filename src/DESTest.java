@@ -31,7 +31,7 @@ class DESTest extends DES {
         return blocGen;
     }
 
-    public static int[] generePerm
+//    public static int[] generePerm
 
     public
     //Test de l'intégrité du message passé dans stringToBits et bitsToString

@@ -4,17 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f306b5df-4f9e-4a59-b494-c28cd790eae7" name="Changes" comment="SIUUUUUU">
-      <change afterPath="$PROJECT_DIR$/src/TripleDES.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_09_10_2023_10_25_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_09_10_2023_10_25__Changes_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_12_10_2023_10_39_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_12_10_2023_10_39__Changes_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_16_10_2023_10_24__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_16_10_2023_10_24__Changes_.xml" afterDir="false" />
+    <list default="true" id="f306b5df-4f9e-4a59-b494-c28cd790eae7" name="Changes" comment="et paf FIN DU JEU">
+      <change afterPath="$PROJECT_DIR$/src/GraphicDES.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DES.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DES.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/DESTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DESTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/TestDes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TestDes.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,8 +17,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="JUnit5 Test Class" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -80,7 +73,7 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.DESTest$testPermutation.valVideTest">
+  <component name="RunManager" selected="JUnit.DESTest$testPermutation">
     <configuration name="DESTest$testPermutation" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="CrypteurDecrypteur" />
       <option name="PACKAGE_NAME" value="DESTest" />
@@ -158,6 +151,7 @@
       <workItem from="1697566232959" duration="3331000" />
       <workItem from="1697655513009" duration="5178000" />
       <workItem from="1697731566233" duration="1400000" />
+      <workItem from="1698310346628" duration="775000" />
     </task>
     <task id="LOCAL-00001" summary="avancée majeure x)">
       <created>1695758582312</created>
