@@ -212,6 +212,10 @@ public class DES {
 
     //Méthode complémentaire à decoupage qui recolle les blocs précédemment découpés
     public int[] recollage_bloc(int[][] blocs){
+        //Je traite le cas très particulier où on donne une liste vide à la fonction
+        if (blocs.length==0){
+            return (new int[]{});
+        }
         int taille=blocs[0].length;
         int[] exit=new int[taille* blocs.length];
          for(int i=0;i< blocs.length;i++) {
@@ -225,6 +229,8 @@ public class DES {
 
     //Méthode qui permet de décaller tous les éléments d'une liste vers la gauche, d'un certain cran
     public int[] decalle_gauche(int[] bloc,int nbCran){
+        //Je mets un tableau temporaire pour pas modifier celui que je passe en paramètre
+        int[] tempBloc=bloc;
         int n=bloc.length;
         //tableau temporaire pour les éléments tout à gauche
         int[] tempoTab=new int[nbCran];

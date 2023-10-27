@@ -4,11 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f306b5df-4f9e-4a59-b494-c28cd790eae7" name="Changes" comment="et paf FIN DU JEU">
+    <list default="true" id="f306b5df-4f9e-4a59-b494-c28cd790eae7" name="Changes" comment="Test complicat :stuck_tongue_out:">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/DES.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DES.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/DESTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DESTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GraphicDES.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GraphicDES.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,7 +73,26 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.DESTest.testDecoupageEtRecollageBloc">
+  <component name="RunManager" selected="JUnit.DESTest.testDecalle_gauche">
+    <configuration name="DESTest$TestDecoupageEtRecollageBloc" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="CrypteurDecrypteur" />
+      <option name="PACKAGE_NAME" value="DESTest" />
+      <option name="MAIN_CLASS_NAME" value="DESTest$TestDecoupageEtRecollageBloc" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="DESTest$TestDecoupageEtRecollageBloc.valMinTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="CrypteurDecrypteur" />
+      <option name="PACKAGE_NAME" value="DESTest" />
+      <option name="MAIN_CLASS_NAME" value="DESTest$TestDecoupageEtRecollageBloc" />
+      <option name="METHOD_NAME" value="valMinTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="DESTest$testPermutation" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="CrypteurDecrypteur" />
       <option name="PACKAGE_NAME" value="DESTest" />
@@ -84,21 +102,11 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="DESTest$testPermutation.valMinTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="DESTest.testDecalle_gauche" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="CrypteurDecrypteur" />
-      <option name="PACKAGE_NAME" value="DESTest" />
-      <option name="MAIN_CLASS_NAME" value="DESTest$testPermutation" />
-      <option name="METHOD_NAME" value="valMinTest" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="DESTest$testPermutation.valVideTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="CrypteurDecrypteur" />
-      <option name="PACKAGE_NAME" value="DESTest" />
-      <option name="MAIN_CLASS_NAME" value="DESTest$testPermutation" />
-      <option name="METHOD_NAME" value="valVideTest" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="DESTest" />
+      <option name="METHOD_NAME" value="testDecalle_gauche" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -114,23 +122,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="DESTest.testPermutation" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="CrypteurDecrypteur" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="DESTest" />
-      <option name="METHOD_NAME" value="testPermutation" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.DESTest.testDecalle_gauche" />
+        <item itemvalue="JUnit.DESTest$TestDecoupageEtRecollageBloc.valMinTest" />
+        <item itemvalue="JUnit.DESTest$TestDecoupageEtRecollageBloc" />
         <item itemvalue="JUnit.DESTest.testDecoupageEtRecollageBloc" />
         <item itemvalue="JUnit.DESTest$testPermutation" />
-        <item itemvalue="JUnit.DESTest$testPermutation.valVideTest" />
-        <item itemvalue="JUnit.DESTest$testPermutation.valMinTest" />
-        <item itemvalue="JUnit.DESTest.testPermutation" />
       </list>
     </recent_temporary>
   </component>
@@ -153,6 +151,7 @@
       <workItem from="1697655513009" duration="5178000" />
       <workItem from="1697731566233" duration="1400000" />
       <workItem from="1698310346628" duration="775000" />
+      <workItem from="1698424156500" duration="3524000" />
     </task>
     <task id="LOCAL-00001" summary="avancée majeure x)">
       <created>1695758582312</created>
@@ -175,7 +174,14 @@
       <option name="project" value="LOCAL" />
       <updated>1696277269871</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Test complicat :stuck_tongue_out:">
+      <created>1698347054501</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1698347054501</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -196,6 +202,7 @@
     <MESSAGE value="avancée majeure x)" />
     <MESSAGE value="je commit pour garder une trace de ma boucle de test x)" />
     <MESSAGE value="fin de crypte qui ne fonctionne pas mais bon on verra ça plus tard + fonction S a l'air de fonctionner mais jsp pour F" />
-    <option name="LAST_COMMIT_MESSAGE" value="fin de crypte qui ne fonctionne pas mais bon on verra ça plus tard + fonction S a l'air de fonctionner mais jsp pour F" />
+    <MESSAGE value="Test complicat :stuck_tongue_out:" />
+    <option name="LAST_COMMIT_MESSAGE" value="Test complicat :stuck_tongue_out:" />
   </component>
 </project>
