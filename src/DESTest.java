@@ -1,6 +1,7 @@
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
+import javax.crypto.spec.PSource;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Random;
@@ -50,14 +51,31 @@ class DESTest extends DES {
         }
         return tabPerm;
     }
-
-    public
-    //Test de l'intégrité du message passé dans stringToBits et bitsToString
-    @Test
-    void testStringToBitsANDBitsToString() {
-        assertEquals(S, bitsToString(stringToBits(S)));
+    public static String genereMessageAlea(int taille){
+        Random r=new Random();
+        char lettreAlea;
+        StringBuilder message= new StringBuilder();
+        for(int i=0;i<taille;i++){
+            //C'est la plage des caractères ASCII imprimable + les caractères latins courants
+            lettreAlea= (char) r.nextInt(32,256);
+            message.append(lettreAlea);
+        }
+        return message.toString();
     }
-
+    //Test de l'intégrité du message passé dans stringToBits et bitsToString
+    @Nested class TestStringToBitsANDBitsToString {
+        @Test void testRandom() {
+            for (int i = 1; i < 1000; i++) {
+                String message = genereMessageAlea(i);
+                assertEquals(message, bitsToString(stringToBits(message)));
+            }
+        }
+        @Test void testLimite(){
+            String message = "";
+            assertEquals(message,bitsToString(stringToBits(message)));
+        }
+    }
+    //Test Visuel de GenereMasterKey parce que je ne peux pas faire grand-chose de mieux
     @Test
     void testGenereMasterKey() {
         genereMasterKey();
@@ -67,8 +85,6 @@ class DESTest extends DES {
         System.out.println("/////////////////////////////////\n");
     }
 
-    //Remarque: la fonction invPermutation est analogue avec permutation que si tab_permutation contient tous les indices de bloc et ce une et une seule fois.
-    //Vu que cette fonction n'est utilisée que pour inverser permutation initiale, qui est une bijection, ce n'est pas gênant mais je tenais à le dire.
     @Nested
     class testPermutation {
         @Test
@@ -112,7 +128,9 @@ class DESTest extends DES {
             assertEquals(0, res3.length);
         }
     }
-
+    //Remarque: la fonction invPermutation est analogue avec permutation que si tab_permutation contient tous les indices
+    // de bloc et ce une et une seule fois.Vu que cette fonction n'est utilisée que pour inverser permutation initiale,
+    // qui est une bijection, ce n'est pas gênant mais je tenais à le dire.
     @Nested
     class TestInvPermutation {
         @Test
@@ -185,41 +203,95 @@ class DESTest extends DES {
         int[] bloc={1};
         assertThrows(ArithmeticException.class,() -> recollage_bloc(decoupage(bloc,0)));
     }
-
 }
-    @Test
-    void testDecalle_gauche() {
-        int[] blocInitial=genereBlocOrPerm(100,33);
-        System.out.println(Arrays.toString(blocInitial));
-        int[] res=decalle_gauche(blocInitial,2);
-        for(int i=2;i<blocInitial.length;i++){
-            System.out.println(i);
-            assertEquals(blocInitial[i],res[i-2]);
+    @Nested
+    class TestDecalle_Gauche {
+        @Test
+        void testRandom() {
+            Random r = new Random();
+            for (int k = 1; k < 1000; k++) {
+                int[] blocInitial = genereBlocOrPerm(k, 50);
+                int decale_cran = r.nextInt(1, k + 1);
+                int[] res = decalle_gauche(blocInitial, decale_cran);
+                //Test du gros de la liste
+                for (int i = decale_cran; i < blocInitial.length; i++) {
+                    assertEquals(blocInitial[i], res[i - decale_cran]);
+                }
+                //Test de la fin de la liste
+                for (int i = 0, j = blocInitial.length - decale_cran; i < decale_cran; i++, j++) {
+                    assertEquals(blocInitial[i], res[j]);
+                }
+            }
+
         }
-
+        @Test
+        void testLimite(){
+            int[] bloc={};
+            int[] res=decalle_gauche(bloc,1);
+            assertArrayEquals(bloc,res);
+            int[] bloc2={1};
+            int [] res2=decalle_gauche(bloc2,0);
+            assertArrayEquals(bloc2,res2);
+        }
     }
 
-    @Test
-    void testXor() {
+    @Nested
+    class TestXor {
+        //Là je teste pour des entiers entre 0 et 1 parce que c'est le plus logique pour le xor
+        //Mais il faut savoir que ça fonctionne (bizarrement) pour tous les nombres même si je ne comprends pas trop son
+        //Fonctionnement dans ce cas.
+        @Test void testRandom() {
+            Random r = new Random();
+            for (int k = 1; k < 1000; k++) {
+                int[] blocInitial = genereBlocOrPerm(k, 2);
+                int[] res = xor(blocInitial,blocInitial);
+                assertArrayEquals(res,new int[res.length]);
+            }
+        }
+        @Test void testListeVide(){
+            int[] bloc={};
+            int[] res=xor(bloc,bloc);
+            assertArrayEquals(res,bloc);
+        }
+        @Test void testInterdit(){
+            int[] bloc={};
+            int[] bloc2={1};
+            assertThrows(IllegalArgumentException.class,()-> xor(bloc,bloc2));
+        }
     }
-
+    //Pareil cela ne sera qu'un test visuel
     @Test
     void testGénèreClé() {
+        génèreClé(0);
+        System.out.println("clé finale");
+        System.out.println(Arrays.toString(tab_cles[0]));
     }
-
-    @Test
-    void testFonctions_S() {
+    //Bon j'aime bien quand c'est aléatoire mais là à part reproduire le même algorithme je vois pas comment
+    //L'automatiser...
+    @Nested class TestFonctionS{
+            @Test void testDetermine() {
+                assertArrayEquals(fonctions_S(new int[]{1,1,0,1,1,1},0),new int[]{1,1,1,0});
+                assertArrayEquals(fonctions_S(new int[]{1,1,0,1,1,1},15),new int[]{0,0,0,0});
+            }
+            @Test void testInterdit(){
+                assertThrows(IllegalArgumentException.class,()->fonctions_S(new int[]{},0));
+            }
     }
 
     @Test
     void testFonction_F() {
     }
 
-    @Test
-    void testCrypte() {
-    }
-
-    @Test
-    void testDecrypte() {
+    @Nested class testCrypteDecrypte{
+        @Test void testRandom() {
+            for (int i = 1; i < 1000; i++) {
+                String message = genereMessageAlea(i);
+                assertEquals(message, decrypte(crypte(message)));
+            }
+        }
+        @Test void testLimite(){
+            String message="";
+            assertEquals(message,decrypte(crypte(message)));
+        }
     }
 }

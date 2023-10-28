@@ -229,6 +229,11 @@ public class DES {
 
     //Méthode qui permet de décaller tous les éléments d'une liste vers la gauche, d'un certain cran
     public int[] decalle_gauche(int[] bloc,int nbCran){
+        //Comme d'habitude, je traite le cas où le bloc est vide
+        //Et le cas où on ne décalle pas la liste pour économiser des calculs/ allocations mémoires inutiles
+        if (bloc.length==0 || nbCran==0){
+            return bloc;
+        }
         //Je mets un tableau temporaire pour ne pas modifier celui que je passe en paramètre
         int n=bloc.length;
         int[] tempBloc=new int[n];
@@ -252,6 +257,10 @@ public class DES {
     }
     //Méthode qui réalise le xor entre 2 tableaux de même taille
     public int[] xor(int[] tab1,int[] tab2){
+        //Le cas où les tableaux n'ont pas la même taille
+        if (tab1.length!= tab2.length){
+            throw new IllegalArgumentException("Les tableaux doivent avoir la même taille");
+        }
         int[] exit=new int[tab1.length];
         for(int i=0;i<tab1.length;i++){
             //J'utilise le xor intégré de java pour éviter les ifs inutiles
@@ -274,8 +283,6 @@ public class DES {
         int[] blocPerm=recollage_bloc(ensBloc);
         //Nouvelle permutation avec PC2
         int[] key=permutation(PC2,blocPerm);
-        System.out.println("clé finale");
-        System.out.println(Arrays.toString(key));
         tab_cles[n]=key;
     }
 
@@ -283,6 +290,9 @@ public class DES {
     //d'un tableau Sn dont on connait l'indice.
     //En résumé, on applique la fonction S du diaporama ^^' (diapo 31)
     public int[] fonctions_S(int[] tab,int n){
+        if (tab.length<6){
+            throw new IllegalArgumentException("La taille du tableau est trop petite");
+        }
         //Les bits 1 et 6 permettent de trouver la ligne
         int ligne=tab[0]*2+tab[5];
         //Les bits 2,3,4,5 servent à trouver la colonne

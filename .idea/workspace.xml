@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f306b5df-4f9e-4a59-b494-c28cd790eae7" name="Changes" comment="Test SIU pas totalement">
+    <list default="true" id="f306b5df-4f9e-4a59-b494-c28cd790eae7" name="Changes" comment="SIUUUUUU">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/DES.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DES.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/DESTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DESTest.java" afterDir="false" />
@@ -23,6 +23,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="9e1ea37568610bb3800dbc78d74ee3b5132d927e" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GithubDefaultAccount">
@@ -74,49 +79,48 @@
     </key>
   </component>
   <component name="RunManager">
-    <configuration name="DESTest$TestDecoupageEtRecollageBloc" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="DESTest$TestFonctionS" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="CrypteurDecrypteur" />
       <option name="PACKAGE_NAME" value="DESTest" />
-      <option name="MAIN_CLASS_NAME" value="DESTest$TestDecoupageEtRecollageBloc" />
+      <option name="MAIN_CLASS_NAME" value="DESTest$TestFonctionS" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="DESTest$TestDecoupageEtRecollageBloc.valMinTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="DESTest$TestStringToBitsANDBitsToString" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="CrypteurDecrypteur" />
       <option name="PACKAGE_NAME" value="DESTest" />
-      <option name="MAIN_CLASS_NAME" value="DESTest$TestDecoupageEtRecollageBloc" />
-      <option name="METHOD_NAME" value="valMinTest" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="DESTest$testPermutation" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="CrypteurDecrypteur" />
-      <option name="PACKAGE_NAME" value="DESTest" />
-      <option name="MAIN_CLASS_NAME" value="DESTest$testPermutation" />
+      <option name="MAIN_CLASS_NAME" value="DESTest$TestStringToBitsANDBitsToString" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="DESTest.testDecalle_gauche" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="DESTest$testCrypteDecrypte" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="CrypteurDecrypteur" />
+      <option name="PACKAGE_NAME" value="DESTest" />
+      <option name="MAIN_CLASS_NAME" value="DESTest$testCrypteDecrypte" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="DESTest.testGénèreClé" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="CrypteurDecrypteur" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="DESTest" />
-      <option name="METHOD_NAME" value="testDecalle_gauche" />
+      <option name="METHOD_NAME" value="testGénèreClé" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="DESTest.testDecoupageEtRecollageBloc" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="DESTest.testStringToBitsANDBitsToString" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="CrypteurDecrypteur" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="DESTest" />
-      <option name="METHOD_NAME" value="testDecoupageEtRecollageBloc" />
+      <option name="METHOD_NAME" value="testStringToBitsANDBitsToString" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -124,11 +128,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.DESTest.testDecalle_gauche" />
-        <item itemvalue="JUnit.DESTest$TestDecoupageEtRecollageBloc.valMinTest" />
-        <item itemvalue="JUnit.DESTest$TestDecoupageEtRecollageBloc" />
-        <item itemvalue="JUnit.DESTest.testDecoupageEtRecollageBloc" />
-        <item itemvalue="JUnit.DESTest$testPermutation" />
+        <item itemvalue="JUnit.DESTest$testCrypteDecrypte" />
+        <item itemvalue="JUnit.DESTest$TestFonctionS" />
+        <item itemvalue="JUnit.DESTest.testGénèreClé" />
+        <item itemvalue="JUnit.DESTest$TestStringToBitsANDBitsToString" />
+        <item itemvalue="JUnit.DESTest.testStringToBitsANDBitsToString" />
       </list>
     </recent_temporary>
   </component>
