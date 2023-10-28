@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f306b5df-4f9e-4a59-b494-c28cd790eae7" name="Changes" comment="Test complicat :stuck_tongue_out:">
+    <list default="true" id="f306b5df-4f9e-4a59-b494-c28cd790eae7" name="Changes" comment="Test SIU pas totalement">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/DES.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DES.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/DESTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DESTest.java" afterDir="false" />
@@ -73,7 +73,7 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.DESTest.testDecalle_gauche">
+  <component name="RunManager">
     <configuration name="DESTest$TestDecoupageEtRecollageBloc" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="CrypteurDecrypteur" />
       <option name="PACKAGE_NAME" value="DESTest" />
@@ -152,6 +152,8 @@
       <workItem from="1697731566233" duration="1400000" />
       <workItem from="1698310346628" duration="775000" />
       <workItem from="1698424156500" duration="3524000" />
+      <workItem from="1698439425820" duration="27000" />
+      <workItem from="1698480588266" duration="965000" />
     </task>
     <task id="LOCAL-00001" summary="avancée majeure x)">
       <created>1695758582312</created>
@@ -181,7 +183,14 @@
       <option name="project" value="LOCAL" />
       <updated>1698347054501</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Test SIU pas totalement">
+      <created>1698439446024</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1698439446024</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -203,6 +212,7 @@
     <MESSAGE value="je commit pour garder une trace de ma boucle de test x)" />
     <MESSAGE value="fin de crypte qui ne fonctionne pas mais bon on verra ça plus tard + fonction S a l'air de fonctionner mais jsp pour F" />
     <MESSAGE value="Test complicat :stuck_tongue_out:" />
-    <option name="LAST_COMMIT_MESSAGE" value="Test complicat :stuck_tongue_out:" />
+    <MESSAGE value="Test SIU pas totalement" />
+    <option name="LAST_COMMIT_MESSAGE" value="Test SIU pas totalement" />
   </component>
 </project>

@@ -192,10 +192,9 @@ class DESTest extends DES {
         int[] blocInitial=genereBlocOrPerm(100,33);
         System.out.println(Arrays.toString(blocInitial));
         int[] res=decalle_gauche(blocInitial,2);
-        System.out.println(Arrays.toString(blocInitial));
-        System.out.println(Arrays.toString(res));
-        for(int i=0;i<blocInitial.length;i++){
-            assertEquals(blocInitial[i+2],res[i]);
+        for(int i=2;i<blocInitial.length;i++){
+            System.out.println(i);
+            assertEquals(blocInitial[i],res[i-2]);
         }
 
     }

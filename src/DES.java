@@ -229,27 +229,26 @@ public class DES {
 
     //Méthode qui permet de décaller tous les éléments d'une liste vers la gauche, d'un certain cran
     public int[] decalle_gauche(int[] bloc,int nbCran){
-        //Je mets un tableau temporaire pour pas modifier celui que je passe en paramètre
-        int[] tempBloc=bloc;
+        //Je mets un tableau temporaire pour ne pas modifier celui que je passe en paramètre
         int n=bloc.length;
+        int[] tempBloc=new int[n];
+        System.arraycopy(bloc,0,tempBloc,0,n);
         //tableau temporaire pour les éléments tout à gauche
         int[] tempoTab=new int[nbCran];
         //stockage de ces éléments dans le tableau temporaire
-        for(int i=0;i<nbCran;i++){
-            tempoTab[i]=bloc[i];
-        }
+        System.arraycopy(tempBloc, 0, tempoTab, 0, nbCran);
         //traitement des autres entiers
         for(int i=0;i<n-nbCran;i++){
-            bloc[i]=bloc[i+nbCran];
+            tempBloc[i]=tempBloc[i+nbCran];
         }
 
         //traitement des éléments du tableau temporaire
         //Je ne savais pas qu'on pouvait initialiser plusieurs variables dans une simple boucle for.
         //Ce fut bien pratique dans ce cas puisque j'avais réellement besoin de ces 2 variables
         for(int i=n-nbCran,j=0;i<n;i++,j++){
-            bloc[i]=tempoTab[j];
+            tempBloc[i]=tempoTab[j];
         }
-        return bloc;
+        return tempBloc;
     }
     //Méthode qui réalise le xor entre 2 tableaux de même taille
     public int[] xor(int[] tab1,int[] tab2){
