@@ -364,7 +364,6 @@ public class DES {
             // les deux parties G15 et D15 sont recollées + permutation inverse de la première
             int[] end=invPermutation(PERM_INITIALE,recollage_bloc(finRonde));
             decoupeBegin[i]=end;
-            //System.out.println(Arrays.toString(recollage_bloc(decoupeBegin)));
         }
         return recollage_bloc(decoupeBegin);
     }
@@ -397,7 +396,6 @@ public class DES {
             //// les deux parties G0 et D0 sont recollées + permutation inverse de la première
             int[] end=invPermutation(PERM_INITIALE,recollage_bloc(finRonde));
             decoupeCodé[i]=end;
-            //System.out.println(Arrays.toString(recollage_bloc(decoupeCodé)));
         }
         //On transforme le tableau obtenu en un texte lisible
      return bitsToString(recollage_bloc(decoupeCodé));

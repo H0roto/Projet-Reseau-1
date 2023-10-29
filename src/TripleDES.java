@@ -9,12 +9,33 @@ public class TripleDES extends DES {
     int[][] K =new int[3][64];
     //tab_cles devient un tableau de tableau de tableau puisque chaque tableau est le tableau de tableau de K1, K2 ou K3
     int[][][] tab_cles;
-
     public TripleDES(){
         genereKn();
         tab_cles=new int[3][NB_RONDE][48];
     }
-
+    //Redéfinition du bitsToString de DES pour ne pas faire de bourrage.
+    //J'aurai pu le gérer dans DES mais je trouvais bizarre de mettre une option spécifique à TripleDES dans une
+    // fonction de DES
+    public String bitsToString(int[] blocs){
+        ArrayList<Character> listChar= new ArrayList<>();
+        StringBuilder tempoSBits= new StringBuilder();
+        for(int i=0;i<blocs.length;i++){
+            tempoSBits.append(blocs[i]);
+            // Si nous avons 8 bits ou si nous sommes à la fin du tableau 'blocs'
+            if (tempoSBits.length()==8 || i== blocs.length-1){
+                int ascii = (Integer.parseInt(tempoSBits.toString(), 2));
+                listChar.add((char) ascii);
+                tempoSBits = new StringBuilder();
+            }
+        }
+        StringBuilder exit = new StringBuilder();
+        //On ajoute enfin tous les caractères qu'on vient de former pour retrouver la chaîne initiale
+        for (char c:listChar
+             ) {
+            exit.append(c);
+        }
+        return exit.toString();
+     }
      //Ici aussi ça change pour les mêmes raisons → 3 clés au lieu d'une
      public void genereKn() {
          for (int k = 0; k < 3; k++) {
@@ -25,7 +46,6 @@ public class TripleDES extends DES {
              }
          }
      }
-     //Ou ici !
     public void génèreClé(int n,int nbDES){
         int[] kTemp=K[nbDES-1];
         int[] tempKey=permutation(PC1,kTemp);
@@ -36,10 +56,7 @@ public class TripleDES extends DES {
         int[] blocPerm=recollage_bloc(ensBloc);
         int[] key=permutation(PC2,blocPerm);
         tab_cles[nbDES-1][n]=key;
-//        System.out.println("clé finale K"+nbDES);
-//        System.out.println(Arrays.toString(key));
     }
-    //Problème ici !
     public int[] fonction_F(int[] unD,int n,int nbDES){
         int[] dPrime=permutation(E,unD);
         int[] dStar=xor(dPrime,tab_cles[nbDES-1][n]);
@@ -85,9 +102,7 @@ public class TripleDES extends DES {
             // les deux parties G15 et D15 sont recollées + permutation inverse de la première
             int[] end=invPermutation(PERM_INITIALE,recollage_bloc(finRonde));
             decoupeBegin[i]=end;
-            //System.out.println(Arrays.toString(recollage_bloc(decoupeBegin)));
         }
-        System.out.println(nbDes+Arrays.deepToString(tab_cles[nbDes-1]));
         return recollage_bloc(decoupeBegin);
     }
 
@@ -123,10 +138,8 @@ public class TripleDES extends DES {
             //// les deux parties G0 et D0 sont recollées + permutation inverse de la première
             int[] end=invPermutation(PERM_INITIALE,recollage_bloc(finRonde));
             decoupeCodé[i]=end;
-            //System.out.println(Arrays.toString(recollage_bloc(decoupeCodé)));
         }
         //On transforme le tableau obtenu en un texte lisible
-        System.out.println(nbDes+Arrays.deepToString(tab_cles[nbDes-1]));
      return bitsToString(recollage_bloc(decoupeCodé));
     }
 
@@ -134,6 +147,8 @@ public class TripleDES extends DES {
         return crypte(decrypte(crypte(messageClair,1,true),2,true),3,true);
     }
     public String decrypteTripleDES(int[] messageCodé){
-        return decrypte(crypte(decrypte(messageCodé,3,false),2,false),1,false);
+        String res=decrypte(crypte(decrypte(messageCodé,3,false),2,false),1,false);
+        //Je gère le bourrage ici et non dans decrypte puisque sinon j'ai des problèmes par rapport aux bourrages
+        return res.replaceAll("\0", ""); // enlève tous les caractères null
     }
 }

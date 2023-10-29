@@ -10,19 +10,7 @@ import java.util.SplittableRandom;
 import static org.junit.jupiter.api.Assertions.*;
 
 class DESTest extends DES {
-    //Chaîne devant être cryptée/décryptée
-    private static final String S = "On sait depuis longtemps que travailler avec du texte lisible et contenant du sens est source de distractions," +
-            " et empêche de se concentrer sur la mise en page elle-même." +
-            " L'avantage du Lorem Ipsum sur un texte générique comme 'Du texte. Du texte. Du texte.'" +
-            " est qu'il possède une distribution de lettres plus ou moins normale," +
-            " et en tout cas comparable avec celle du français standard." +
-            " De nombreuses suites logicielles de mise en page" +
-            " ou éditeurs de sites Web ont fait du Lorem Ipsum leur faux texte par défaut," +
-            " et une recherche pour 'Lorem Ipsum' vous conduira vers de nombreux sites qui n'en sont encore" +
-            " qu'à leur phase de construction." +
-            " Plusieurs versions sont apparues avec le temps, parfois par accident, souvent intentionnellement" +
-            " (histoire d'y rajouter de petits clins d'oeil, voire des phrases embarassantes)";
-
+    //Fonction qui génère un bloc ou une permutation aléatoire
     public static int[] genereBlocOrPerm(int taille, int bound) {
         //Bound=2 si on génère un bloc et taille sinon
         Random r = new Random();
@@ -34,8 +22,8 @@ class DESTest extends DES {
         return blocGen;
     }
 
-    //Ici, on génère aussi une permutation, mais cette fois-ci, sans avoir 2 fois le même chiffre dans la table ni de chiffre manquant
-    //Pour pouvoir faire l'opération inverse.
+    //Ici, on génère aussi une permutation, mais cette fois-ci, sans avoir 2 fois le même chiffre dans la table ni de
+    // chiffre manquant pour pouvoir faire l'opération inverse.
     public static int[] generePermAlea(int taille) {
         int[] tabPerm = new int[taille];
         HashSet<Integer> usedNumber = new HashSet<>();
@@ -51,6 +39,7 @@ class DESTest extends DES {
         }
         return tabPerm;
     }
+    //Fonction qui génère un message aléatoire
     public static String genereMessageAlea(int taille){
         Random r=new Random();
         char lettreAlea;
@@ -81,60 +70,15 @@ class DESTest extends DES {
         genereMasterKey();
         System.out.println("///MasterKey Supposée Aléatoire///");
         System.out.println(Arrays.toString(masterkey));
-        System.out.println(masterkey.length);
         System.out.println("/////////////////////////////////\n");
-    }
-
-    @Nested
-    class testPermutation {
-        @Test
-            //ça ne sert pas à grand-chose puisque j'utilise le même algorithme pour tester que pour coder, mais bon je le laisse
-        void randomTest() {
-            Random r = new Random();
-            int deb = r.nextInt(1, 50);
-            int fin = r.nextInt(51, 100);
-            for (int i = deb; i < fin; i++) {
-                int[] perm = genereBlocOrPerm(i, i);
-                int[] bloc = genereBlocOrPerm(i, 2);
-                int[] res = permutation(perm, bloc);
-                for (int j = 0; j < bloc.length; j++) {
-                    assertEquals(bloc[perm[j]], res[j]);
-                }
-            }
-        }
-
-        @Test
-        void valMinTest() {
-            int[] perm = new int[]{0};
-            int[] bloc = new int[]{1};
-            int[] res = permutation(perm, bloc);
-            assertEquals(bloc[perm[0]], res[0]);
-        }
-
-        @Test
-        void valVideTest() {
-            int[] perm = new int[]{};
-            int[] bloc = new int[]{};
-            int[] blocPasVide = new int[12];
-            int[] permPasVide = {1, 0};
-            int[] res = permutation(perm, bloc);
-            int[] res2 = permutation(perm, blocPasVide);
-            int[] res3 = permutation(permPasVide, bloc);
-            //perm et blocs vides
-            assertEquals(0, res.length);
-            //perm vide mais pas bloc
-            assertEquals(blocPasVide, res2);
-            //perm pas vide mais bloc vide
-            assertEquals(0, res3.length);
-        }
     }
     //Remarque: la fonction invPermutation est analogue avec permutation que si tab_permutation contient tous les indices
     // de bloc et ce une et une seule fois.Vu que cette fonction n'est utilisée que pour inverser permutation initiale,
     // qui est une bijection, ce n'est pas gênant mais je tenais à le dire.
     @Nested
-    class TestInvPermutation {
+    class TestPermutationEtInvPermutation {
         @Test
-        void testIfComplementaire() {
+        void testRandomIfComplementaire() {
             Random r = new Random();
             int deb = r.nextInt(1, 50);
             int fin = r.nextInt(51, 100);
@@ -166,13 +110,11 @@ class DESTest extends DES {
             //perm et blocs vides
             assertEquals(0, res.length);
             //perm vide mais pas bloc
-            System.out.println(Arrays.toString(res2));
             assertEquals(blocPasVide, res2);
             //perm pas vide mais bloc vide
             assertEquals(0, res3.length);
         }
     }
-
     @Nested
     class TestDecoupageEtRecollageBloc {
     @Test
@@ -277,9 +219,12 @@ class DESTest extends DES {
                 assertThrows(IllegalArgumentException.class,()->fonctions_S(new int[]{},0));
             }
     }
-
+    //Test visuel de F
     @Test
     void testFonction_F() {
+        int[] D=genereBlocOrPerm(32,2);
+        System.out.println("Résultat fonction F");
+        System.out.println(Arrays.toString((fonction_F(D,0))));
     }
 
     @Nested class testCrypteDecrypte{
